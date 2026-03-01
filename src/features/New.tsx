@@ -26,7 +26,7 @@ const boxOfficeData = [
   { title: "Avatar: Fire and Ash", score: 66, type: "fresh" },
 ];
 
-const ListSection = ({ id, title, linkText, data }) => (
+const ListSection = ({ id, title, linkText, data }: any) => (
   <section className="stats-column" aria-labelledby={id}>
     <header className="stats-header">
       <h2 id={id}>{title}</h2>
