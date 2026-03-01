@@ -293,7 +293,6 @@ a {
   list-style: none;
   margin: 0;
   padding: 0;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
@@ -368,6 +367,56 @@ a {
   margin: 0 auto;
   padding: 40px 20px;
   position: relative;
+}
+
+/* --- MOBILE STACKING LOGIC --- */
+@media (max-width: 600px) {
+  .movie-section {
+    padding: 20px 15px;
+  }
+
+  .slider-frame {
+    overflow: visible; /* Allow the stack to grow vertically */
+  }
+
+  .slider-track {
+    flex-direction: column; /* Stack cards vertically */
+    transform: none !important; /* Disable the horizontal sliding transform */
+    gap: 30px; /* More breathing room between stacked cards */
+  }
+
+  .slider-item {
+    flex: 0 0 100%; /* Each card takes full width */
+    width: 100%;
+  }
+
+  .movie-card {
+    max-width: 100%; /* Allow card to fill the screen width */
+  }
+
+  .poster-container {
+    aspect-ratio: 16 / 9; /* Optional: Make posters wider/shorter for mobile stacking */
+  }
+
+  /* Hide navigation arrows on mobile as they aren't needed for a vertical list */
+  .nav-btn {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  /* Make the black overlay and play button visible by default on mobile */
+  .poster-container::after {
+    opacity: 0.4; /* Persistent subtle dim */
+  }
+
+  .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.9); /* Slightly smaller for mobile */
+  }
+
+  .poster-img {
+    transform: none !important; /* Disable hover scale to prevent jumpiness on tap */
+  }
 }
 
 .section-header {

@@ -6,6 +6,8 @@ import MovieGrid from "./features/movies/MovieGrid";
 import DiscoverMore from "./features/DiscoverMore";
 import Recommend from "./features/Recommend";
 import WatchAtHome from "./features/movies/WatctAtHome";
+import NewRent from "./features/movies/NewRent";
+import ComingSoon from "./features/movies/ComingSoon";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <main id="main-content" tabIndex="-1" className="outline-none">
         <MovieGrid />
         <WatchAtHome />
+        <NewRent />
+        <ComingSoon />
         <DiscoverMore />
         {/* <Recommend /> */}
       </main>

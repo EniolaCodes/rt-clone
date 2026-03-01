@@ -66,6 +66,36 @@ const movies = [
 
 const MovieGrid = () => {
   const [page, setPage] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // --- CONDITIONAL SWIPE LOGIC ---
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    // Only initialize swipe if screen is wider than 600px (Desktop/Tablet)
+    if (window.innerWidth <= 600) return;
+
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    if (window.innerWidth <= 600) return;
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    // Ignore swipe logic if we're on mobile (stacked view)
+    if (window.innerWidth <= 600 || !touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
 
   // Logic: Each 'page' moves the slider by 80% of the container width
   // to bring the peeked card into full focus.
@@ -87,8 +117,22 @@ const MovieGrid = () => {
         </a>
       </div>
 
-      <div className="slider-wrapper">
-        {/* Navigation positioned at the center edges of the frame */}
+      <div
+        className="slider-wrapper"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* {page > 0 && (
+          <button
+            className="nav-btn prev"
+            onClick={handlePrev}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+        )} */}
+        {/* Navigation Buttons (Hidden by CSS on mobile) */}
         {page > 0 && (
           <button
             className="nav-btn prev"
@@ -99,10 +143,26 @@ const MovieGrid = () => {
           </button>
         )}
 
-        <div className="slider-frame">
+        {/* <div className="slider-frame">
           <div
             className="slider-track"
             style={{ transform: `translateX(-${page * 84}%)` }}
+          >
+            {movies.map((movie) => (
+              <div className="slider-item" key={movie.id}>
+                <MovieCard movie={movie} />
+              </div>
+            ))}
+          </div>
+        </div> */}
+        <div className="slider-frame">
+          <div
+            className="slider-track"
+            /* Transform is active only on Desktop; CSS will override on mobile */
+            style={{
+              transform:
+                window.innerWidth > 600 ? `translateX(-${page * 84}%)` : "none",
+            }}
           >
             {movies.map((movie) => (
               <div className="slider-item" key={movie.id}>
