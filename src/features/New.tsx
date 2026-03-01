@@ -35,7 +35,7 @@ const ListSection = ({ id, title, linkText, data }: any) => (
       </a>
     </header>
     <ul className="stats-list ">
-      {data.map((item, index) => (
+      {data.map((item: any, index: number) => (
         <li key={index} className="stats-row">
           <span className="item-title">{item.title}</span>
           <span
