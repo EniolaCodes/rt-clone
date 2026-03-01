@@ -4,67 +4,57 @@ import MovieCard from "../movies/MovieCard";
 const movies = [
   {
     id: 1,
-    title: "The Revenant",
-    img: "https://media.designrush.com/tinymce_images/205872/conversions/1.-Dream-Factory-content.jpg",
-
-    criticScore: 78,
-    audienceScore: 84,
+    title: "The Lord of the Rings",
+    img: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
+    criticScore: 91,
+    audienceScore: 98,
   },
   {
     id: 2,
-    title: "Wuthering Heights",
-    img: "https://substackcdn.com/image/fetch/$s_!SjlY!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F289ad232-bb03-4b07-848c-d0dad888a4dc_2000x2963.png",
-    criticScore: 85,
-    audienceScore: 90,
+    title: "The Shawshank Redemption",
+    img: "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg",
+
+    criticScore: 92,
+    audienceScore: 96,
   },
   {
     id: 3,
-    title: "The Inception",
-    img: "https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg",
-    criticScore: 56,
-    audienceScore: 84,
+    title: "Gladiator",
+    img: "https://substackcdn.com/image/fetch/$s_!SjlY!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F289ad232-bb03-4b07-848c-d0dad888a4dc_2000x2963.png",
+    criticScore: 77,
+    audienceScore: 87,
   },
   {
     id: 4,
-    title: "Interstellar",
-    img: "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SY679_.jpg",
-    criticScore: 78,
-    audienceScore: 100,
+    title: "Fight Club",
+    img: "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+    criticScore: 79,
+    audienceScore: 96,
   },
-
-  {
-    id: 5,
-    title: "The Godfather",
-    img: "https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg",
-    criticScore: 98,
-    audienceScore: 95,
-  },
-
   {
     id: 6,
-    title: "Pulp Fiction",
-    img: "https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY679_.jpg",
-    criticScore: 92,
-    audienceScore: 94,
+    title: "The Silence of the Lambs",
+    img: "https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg",
+    criticScore: 95,
+    audienceScore: 95,
   },
   {
     id: 7,
-    title: "Titanic",
-    img: "https://m.media-amazon.com/images/I/71rNJQ2g-EL._AC_SY679_.jpg",
-    criticScore: 54,
-    audienceScore: 124,
+    title: "Saving Private Ryan",
+    img: "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SY679_.jpg",
+    criticScore: 94,
+    audienceScore: 95,
   },
-
   {
     id: 8,
-    title: "The Matrix",
-    img: "https://m.media-amazon.com/images/I/51vpnbwFHrL._AC_.jpg",
-    criticScore: 78,
-    audienceScore: 84,
+    title: "The Lion King",
+    img: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
+    criticScore: 93,
+    audienceScore: 93,
   },
 ];
 
-const ComingSoon = () => {
+const Latest = () => {
   const [page, setPage] = useState(0);
 
   // Logic: Each 'page' moves the slider by 80% of the container width
@@ -77,7 +67,8 @@ const ComingSoon = () => {
     <section className="movie-section" aria-labelledby="theater-heading">
       <div className="section-header">
         <div>
-          <h2 id="theater-heading">Coming Soon To Theaters</h2>
+          <h2 id="theater-heading">Latest Certified Fresh Movies & TV</h2>
+          <p className="section-subtext">Critics agree: these are must-sees</p>
         </div>
         <a href="#" className="view-all-link">
           VIEW ALL
@@ -85,6 +76,7 @@ const ComingSoon = () => {
       </div>
 
       <div className="slider-wrapper">
+        {/* Navigation positioned at the center edges of the frame */}
         {page > 0 && (
           <button
             className="nav-btn prev"
@@ -125,4 +117,4 @@ const ComingSoon = () => {
   );
 };
 
-export default ComingSoon;
+export default Latest;

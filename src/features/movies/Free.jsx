@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MovieCard from "../movies/MovieCard";
-
 const movies = [
   {
     id: 1,
@@ -64,7 +63,7 @@ const movies = [
   },
 ];
 
-const ComingSoon = () => {
+const Free = () => {
   const [page, setPage] = useState(0);
 
   // Logic: Each 'page' moves the slider by 80% of the container width
@@ -77,7 +76,8 @@ const ComingSoon = () => {
     <section className="movie-section" aria-labelledby="theater-heading">
       <div className="section-header">
         <div>
-          <h2 id="theater-heading">Coming Soon To Theaters</h2>
+          <h2 id="theater-heading">Free To Watch At Home</h2>
+          <p className="section-subtext">Tons of movies to watch for FREE</p>
         </div>
         <a href="#" className="view-all-link">
           VIEW ALL
@@ -85,6 +85,7 @@ const ComingSoon = () => {
       </div>
 
       <div className="slider-wrapper">
+        {/* Navigation positioned at the center edges of the frame */}
         {page > 0 && (
           <button
             className="nav-btn prev"
@@ -125,4 +126,4 @@ const ComingSoon = () => {
   );
 };
 
-export default ComingSoon;
+export default Free;

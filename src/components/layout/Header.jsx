@@ -32,7 +32,7 @@ const socialPlatforms = [
 const Header = () => {
   return (
     <div className=" ">
-      <header role="banner" className="w-full">
+      <header role="banner" className="w-full main-header">
         {/* Logo + Search */}
         <div className="header-content flex justify-between gap-4">
           {/* Logo */}

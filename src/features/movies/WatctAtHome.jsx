@@ -101,7 +101,10 @@ const WatchAtHome = () => {
         <div className="slider-frame">
           <div
             className="slider-track"
-            style={{ transform: `translateX(-${page * 84}%)` }}
+            style={{
+              transform:
+                window.innerWidth > 600 ? `translateX(-${page * 84}%)` : "none",
+            }}
           >
             {movies.map((movie) => (
               <div className="slider-item" key={movie.id}>

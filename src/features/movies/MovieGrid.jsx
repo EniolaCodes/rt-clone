@@ -123,15 +123,6 @@ const MovieGrid = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {/* {page > 0 && (
-          <button
-            className="nav-btn prev"
-            onClick={handlePrev}
-            aria-label="Previous"
-          >
-            ‹
-          </button>
-        )} */}
         {/* Navigation Buttons (Hidden by CSS on mobile) */}
         {page > 0 && (
           <button
@@ -143,18 +134,6 @@ const MovieGrid = () => {
           </button>
         )}
 
-        {/* <div className="slider-frame">
-          <div
-            className="slider-track"
-            style={{ transform: `translateX(-${page * 84}%)` }}
-          >
-            {movies.map((movie) => (
-              <div className="slider-item" key={movie.id}>
-                <MovieCard movie={movie} />
-              </div>
-            ))}
-          </div>
-        </div> */}
         <div className="slider-frame">
           <div
             className="slider-track"

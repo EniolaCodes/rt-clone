@@ -14,11 +14,16 @@ body {
   margin: 0;
   padding: 0px 140px;
 }
+@media (max-width: 600px) {
+  body {
+    padding: 0px 15px;
+  }
+}
 .app-container {
   background-color: #f3f3f3;
 }
 /* header */
-header {
+.main-header {
   background-color: #ec2d01;
   color: #f3f3f3;
 }
@@ -40,6 +45,7 @@ header {
   border: none;
   outline: none;
 }
+
 .search-input:focus {
   outline: 2px solid #fff;
   outline-offset: 2px;
@@ -135,7 +141,20 @@ a {
   align-items: center;
   gap: 2rem;
 }
-
+@media (max-width: 600px) {
+  .search-input {
+    display: none;
+  }
+  .trending-links {
+    display: none;
+  }
+  .right-links {
+    display: none;
+  }
+  .header-content {
+    padding: 1rem;
+  }
+}
 /* footer */
 .footer {
   background-color: #2d2f36;
@@ -327,7 +346,16 @@ a {
 .card-link:focus-visible .card-image {
   transform: scale(1.03);
 }
-
+.card-link:hover .card-image,
+.card-link:focus-visible .card-image {
+  transform: scale(1.03);
+}
+@media (max-width: 600px) {
+  .card-link:hover .card-image,
+  .card-link:focus-visible .card-image {
+    transform: none; /* Disable hover scale on mobile to prevent jumpiness */
+  }
+}
 .card-link:focus-visible {
   outline: 3px solid #ec2d01;
   outline-offset: 3px;
@@ -376,31 +404,30 @@ a {
   }
 
   .slider-frame {
-    overflow: visible; /* Allow the stack to grow vertically */
+    overflow: visible;
   }
 
   .slider-track {
-    flex-direction: column; /* Stack cards vertically */
-    transform: none !important; /* Disable the horizontal sliding transform */
-    gap: 30px; /* More breathing room between stacked cards */
+    flex-direction: column !important;
+    transform: none !important; /* Prevents horizontal shifting */
+    gap: 30px !important;
   }
-
+  .slider-wrapper .nav-btn {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
   .slider-item {
-    flex: 0 0 100%; /* Each card takes full width */
-    width: 100%;
+    flex: 0 0 100% !important;
+    width: 100% !important;
   }
 
   .movie-card {
-    max-width: 100%; /* Allow card to fill the screen width */
+    max-width: 100%;
   }
 
   .poster-container {
-    aspect-ratio: 16 / 9; /* Optional: Make posters wider/shorter for mobile stacking */
-  }
-
-  /* Hide navigation arrows on mobile as they aren't needed for a vertical list */
-  .nav-btn {
-    display: none;
+    aspect-ratio: 16 / 9;
   }
 }
 @media (max-width: 600px) {
@@ -656,4 +683,254 @@ a {
 
 .score {
   margin-right: 10px;
+}
+
+/* NewTV */
+.stats-container {
+  display: flex;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.stats-column {
+  flex: 1;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+  margin-bottom: 0;
+}
+
+.stats-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.stats-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #007aff;
+  text-decoration: none;
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item-title {
+  color: #555;
+  font-size: 1rem;
+}
+
+.item-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  min-width: 60px;
+  justify-content: flex-end;
+}
+
+.grey-circle {
+  width: 18px;
+  height: 18px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* RESPONSIVE STACKING */
+@media (max-width: 800px) {
+  .stats-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .stats-board-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+/* popular */
+.stats-board-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.stats-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+
+  margin-bottom: 0;
+}
+
+.view-all-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2a69e2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sub-nav {
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+.sub-nav a {
+  color: #2a69e2;
+  text-decoration: none;
+}
+
+.separator {
+  margin: 0 6px;
+  color: #ccc;
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.stats-row:hover {
+  background-color: #fafafa;
+}
+.item-score-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 65px;
+  justify-content: flex-end;
+}
+
+.score-value {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.icon.empty {
+  width: 18px;
+  height: 18px;
+  background: #e0e0e0;
+  border-radius: 50%;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.back-to-top-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ec2d01; /* Matching your RT Red theme */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s,
+    opacity 0.3s;
+}
+
+.back-to-top-btn:hover {
+  transform: scale(1.1);
+  background-color: #c42501;
+}
+
+/* Accessibility: Clear focus ring for keyboard users */
+.back-to-top-btn:focus {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+/* On mobile, move it slightly to avoid overlapping browser UI */
+@media (max-width: 600px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* 1. Hide the link visually but keep it accessible to screen readers */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  transition: all 0.2s ease;
+}
+
+/* 2. Style for when the link receives keyboard focus */
+.skip-link:focus {
+  /* Position & Layout */
+  position: absolute;
+  top: 16px; /* top-4 */
+  left: 16px; /* left-4 */
+  z-index: 50;
+  width: auto;
+  height: auto;
+  clip: auto;
+  margin: 0;
+  overflow: visible;
+
+  /* Colors & Branding */
+  background-color: #fa3205;
+  color: #ffffff;
+  padding: 12px 24px; /* py-3 px-6 */
+  border-radius: 6px; /* rounded-md */
+  font-weight: bold;
+  text-decoration: none;
+
+  /* Accessibility Ring */
+  outline: none;
+  box-shadow: 0 0 0 4px #fbbf24; /* ring-4 ring-yellow-400 */
 }

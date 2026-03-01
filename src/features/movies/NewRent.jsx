@@ -4,7 +4,7 @@ import MovieCard from "../movies/MovieCard";
 const movies = [
   {
     id: 1,
-    title: "The Lord of the Rings: The Fellowship of the Ring",
+    title: "The Lord of the Rings",
     img: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
     criticScore: 91,
     audienceScore: 98,
@@ -92,7 +92,10 @@ const NewRent = () => {
         <div className="slider-frame">
           <div
             className="slider-track"
-            style={{ transform: `translateX(-${page * 84}%)` }}
+            style={{
+              transform:
+                window.innerWidth > 600 ? `translateX(-${page * 84}%)` : "none",
+            }}
           >
             {movies.map((movie) => (
               <div className="slider-item" key={movie.id}>
