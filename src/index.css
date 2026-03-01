@@ -334,3 +334,277 @@ a {
   outline-offset: 3px;
   border-radius: 8px;
 }
+.poster-container {
+  position: relative;
+}
+
+.poster-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.poster-container:hover .poster-overlay,
+.poster-container:focus-within .poster-overlay {
+  opacity: 1;
+}
+.poster-container:hover .poster-img,
+.poster-container:focus-within .poster-img {
+  transform: scale(1.03);
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+.movie-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.slider-frame {
+  width: 100%;
+  overflow: hidden;
+}
+.slider-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slider-item {
+  flex: 0 0 21%;
+  min-width: 180px;
+}
+
+/* BUTTON POSITIONING: At the center edges of the frame */
+.nav-btn {
+  position: absolute;
+  top: 40%; /* Centers it vertically relative to the movie posters */
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nav-btn.prev {
+  left: -20px; /* Half-hanging off the left edge */
+}
+
+.nav-btn.next {
+  right: -20px; /* Half-hanging off the right edge */
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #fa3205;
+  color: white;
+  border-color: #fa3205;
+}
+
+.nav-btn:disabled {
+  display: none; /* Hide if no more content */
+}
+
+/* WCAG Focus Styles */
+.nav-btn:focus-visible {
+  outline: 3px solid #007aff;
+  outline-offset: 4px;
+}
+
+.view-all-link {
+  color: #2a69d4;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.section-subtext {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.play-overlay {
+  pointer-events: none;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.play-button {
+  pointer-events: auto;
+  width: 52px;
+  height: 52px;
+  background: inherit;
+  backdrop-filter: blur(5px);
+  border: 4px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+}
+.play-icon {
+  margin-left: 3px; /* Optical adjustment to center the triangle visually */
+  font-size: 1.2rem;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: rgba(250, 50, 5, 0.9);
+}
+
+/* Accessibility: Focus Indicators */
+.watchlist-action:focus-visible,
+.play-button:focus-visible {
+  outline: 3px solid #007aff;
+  outline-offset: 2px;
+}
+.poster-link:hover .play-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.play-icon-shape {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Tooltip/Helper styles for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 3. WATCHLIST BUTTON (WCAG COMPLIANT PILL) */
+.watchlist-action {
+  margin-top: 12px;
+  background: white;
+  border: 1px solid #2a2c2e; /* Dark enough for 4.5:1 contrast */
+  border-radius: 24px; /* Fully rounded pill shape */
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.75rem;
+  min-height: 40px; /* WCAG touch target size recommendation */
+  transition: all 0.2s ease;
+}
+
+.plus-circle {
+  width: 18px;
+  height: 18px;
+  border: 1px solid currentColor;
+  border-radius: 50%; /* Perfect circle for the + sign */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+/* Active/Hover States */
+.watchlist-action:hover {
+  background-color: #f5f5f5;
+}
+
+.watchlist-action.active {
+  background-color: #e8ecef;
+  color: #555;
+  border-color: #888;
+}
+.poster-container {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-button:focus-visible {
+  outline: 3px solid #fa3205;
+  outline-offset: 4px;
+  background-color: #fa3205;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(250, 50, 5, 0.8);
+}
+
+.movie-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-title {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.scores {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.score {
+  margin-right: 10px;
+}
