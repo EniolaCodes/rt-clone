@@ -1,5 +1,4 @@
 import React from "react";
-import "./SkipToContent.css";
 
 const SkipToContent = () => {
   return (
